@@ -111,8 +111,10 @@
 		},
 		"clock": {
 			"timezone": "Europe/Madrid",
-			"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-			"format-alt": "{:%d-%m-%Y}"
+		    	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+			"format":"{:%H:%M:%S}",
+                        "format-alt": "{:%d-%m-%Y}"
+                        , "interval":1
 		},
 		"cpu": {
 			"format": "{usage}% ",
