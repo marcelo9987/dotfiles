@@ -26,5 +26,5 @@ syntax on
 filetype plugin indent on
 
 " plugins 
-source plugins.vim
+source ~/plugins.vim
 
