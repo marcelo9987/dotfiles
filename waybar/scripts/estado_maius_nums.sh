@@ -12,15 +12,15 @@ NUM=$(echo "$DEVICES" | jq '[.keyboards[] | select(.numLock==true)] | any')
 ICON=""
 
 if [ "$CAPS" = "true" ]; then
-    ICON+="🔒 Caps "
+    ICON+="🔒"
 else
-    ICON+="🔐 Caps "
+    ICON+="🔐"
 fi
 
 if [ "$NUM" = "true" ]; then
-    ICON+="| 🔢 Num"
+    ICON+="| 🔢"
 else
-    ICON+="| ⭕ Num"
+    ICON+="| ⭕"
 fi
 
 echo "{\"text\": \"$ICON\", \"tooltip\": \"MAIÚS=$CAPS | NUM=$NUM\"}"
