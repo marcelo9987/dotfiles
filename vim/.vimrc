@@ -25,6 +25,35 @@ set showmatch
 syntax on
 filetype plugin indent on
 
+" Configurar clangd
+if executable('clangd')
+  augroup lsp_c
+    autocmd!
+    autocmd FileType c,cpp call lsp#register_server({
+          \ 'name': 'clangd',
+          \ 'cmd': {server_info->['clangd']},
+          \ 'whitelist': ['c', 'cpp'],
+          \ })
+  augroup END
+endif
+
+"asyncomplete
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~ '\s'
+endfunction
+
+let g:asyncomplete_auto_popup = 0
+" let g:asyncomplete_popup_delay = 200
+
+" inoremap <expr> <S-Tab>   pumvisible() ? "\<C-n>" : "\<C-x>\<C-o>"
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<Tab>" : 
+            \ asyncomplete#force_refresh()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+set completeopt=menuone,noinsert,noselect
+
+
 " plugins 
 source ~/plugins.vim
 
